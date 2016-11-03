@@ -2,13 +2,13 @@
 import urllib.request
 import json
 
-""" Consume public api data here"""
+#  Consume public api data here
 
 def consume_maps():
 
     county = input("Hi enter the town you want to search in Kenya: ")
 
-    api_key = 'AIzaSyBQC8Pxyu_dyOnDvs5lhGnBSUjCFRp8jpc' #google api key
+    api_key = 'AIzaSyBQC8Pxyu_dyOnDvs5lhGnBSUjCFRp8jpc'  # google api key
 
     url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + county + '+county+kenya&key=' + api_key
 
@@ -16,13 +16,14 @@ def consume_maps():
 
     contents = response.read()
 
-    res_text = contents.decode('UTF-8')  #get the correct mime type
+    res_text = contents.decode('UTF-8')  # get the correct mime type
 
     data = json.loads(res_text)
 
     # print(data) debug json output
 
-    """If google finds the county print few county info, else regret"""
+    # If google finds the county print few county info, else regret
+
     if data["status"] == "OK":
         for town in data['results']:
             # print(town['place_id'])
